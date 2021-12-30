@@ -1,0 +1,45 @@
+﻿<Window x:Class="MVVMReactive.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVMReactive"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <TextBlock Text="It is : " />
+        <TextBlock Text="{Binding ActualHour.Value}" />
+        <Button Command="{Binding WriteHourCommand}" HorizontalAlignment="Left">
+            Write hour !
+        </Button>
+        <Button Command="{Binding ChangeHourCommand}" HorizontalAlignment="Left">
+            Add 3 hr !
+        </Button>
+        <Button Command="{Binding ClearListCommand}" HorizontalAlignment="Left">
+            Clear List !
+        </Button>
+        <TextBlock Text="{Binding MainData.Value}" />
+        <ItemsControl Height= "300" ItemsSource="{Binding MainLst.Value}" ItemTemplate="{DynamicResource LineItemTemplate}" Margin="10">
+            <ItemsControl.Resources>
+                <DataTemplate x:Key="LineItemTemplate">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"  FontFamily="{StaticResource FontAwesome}"
+                        Text="{StaticResource fas fa-time}" FontSize="30" Width="30" Height="30" Foreground="Green" />
+                        <TextBlock Margin="5,10,0,14.04" TextWrapping="Wrap" Text="{Binding InstantHour.Value}" d:LayoutOverrides="Width, Height" Grid.Column="1" />
+                        <Button Grid.Column="2" Background="Transparent" BorderThickness="0" Command="{Binding RemoveLine}" CommandParameter="{Binding Id.Value}">
+                            <TextBlock FontFamily="{StaticResource FontAwesome}"
+                        Text="{StaticResource fas fa-delete}" FontSize="30" Width="30" HorizontalAlignment="Center" Height="30" Foreground="Red" Cursor="Hand" />
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.Resources>
+        </ItemsControl>
+    </StackPanel>
+</Window>

@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MVVMReactive"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!-- fontawesome -->
+    <FontFamily x:Key="FontAwesome">/Fonts/fontawesome-webfont.ttf#FontAwesome</FontFamily>
+    <system:String x:Key="fas fa-user-circle">&#xf2bd;</system:String>
+    <system:String x:Key="fas fa-user">&#xf007;</system:String>
+    <system:String x:Key="fas fa-time">&#xf017;</system:String>
+    <system:String x:Key="fas fa-delete">&#xf1f8;</system:String>
+    
+
+    <!-- Images -->
+    
+    <Image x:Key="FRFlag" Source="/resources/Images/flags/FR.gif" />
+    <Image x:Key="ENFlag" Source="/resources/Images/flags/EN.gif" />
+    <Image x:Key="ESFlag" Source="/resources/Images/flags/ES.gif" />     
+    
+    
+        <Style x:Key="alternatingStyle" TargetType="{x:Type ListViewItem}">
+            <Style.Triggers>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="#FFD8EAF5"></Setter>
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#FFF"></Setter>
+                </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF0A206A"/>
+                <Setter Property="Foreground" Value="#FFF"/>
+            </Trigger>
+
+        </Style.Triggers>
+            
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    </Style>
+</ResourceDictionary>
